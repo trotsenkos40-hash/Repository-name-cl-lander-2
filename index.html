@@ -53,13 +53,32 @@
         <h1>🎁 Bono exclusivo para Chile</h1>
         <p>Regístrate y accede a tu bono especial para nuevos usuarios.</p>
 
-        <a class="btn" href="https://onlinepnplnk.com/4TgqSF6i/?subId2=CL&subid={{ad.id}}" target="_blank">
-            Activar bono
+        <a class="btn" href="https://onlinepnplnk.com/4TgqSF6i/?subId2=CL" target="_blank" rel="noopener">
+           Activar bono
         </a>
 
         <div class="note">
             Solo para mayores de 18 años • Chile
         </div>
     </div>
+<script>
+(function () {
+  const OFFER_BASE = "https://onlinepnplnk.com/4TgqSF6i/";
+  const fixed = new URLSearchParams({ subId2: "CL" });
+
+  const qs = new URLSearchParams(window.location.search);
+  const subid = qs.get("subid");
+
+  if (subid) fixed.set("subid", subid);
+
+  const finalUrl = OFFER_BASE + "?" + fixed.toString();
+
+  document.querySelectorAll('a.btn').forEach(a => {
+    a.href = finalUrl;
+    a.target = "_blank";
+    a.rel = "noopener";
+  });
+})();
+</script>
 </body>
 </html>
