@@ -1,82 +1,253 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Bono exclusivo para Chile</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #0b0b0b;
-            color: #ffffff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-        .container {
-            max-width: 420px;
-            padding: 24px;
-            background: #151515;
-            border-radius: 12px;
-            text-align: center;
-        }
-        h1 {
-            font-size: 24px;
-            margin-bottom: 16px;
-        }
-        p {
-            font-size: 16px;
-            margin-bottom: 20px;
-            color: #d0d0d0;
-        }
-        .btn {
-            display: block;
-            background: #00ff5a;
-            color: #000;
-            padding: 16px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 18px;
-        }
-        .note {
-            font-size: 12px;
-            margin-top: 16px;
-            color: #888;
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Bono de bienvenida | Chile</title>
+  <meta name="description" content="Bono de bienvenida para nuevos usuarios en Chile. Registro rápido y seguro. Solo +18." />
+  <meta name="theme-color" content="#0b0b0f" />
+  <style>
+    :root{
+      --bg:#0b0b0f;
+      --card:#14141b;
+      --muted:#a6a6b3;
+      --text:#ffffff;
+      --accent:#00ff57;
+      --accent2:#00d1ff;
+      --shadow:0 18px 50px rgba(0,0,0,.55);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:
+        radial-gradient(1200px 700px at 70% 20%, rgba(0,209,255,.14), transparent 55%),
+        radial-gradient(900px 600px at 20% 70%, rgba(0,255,87,.10), transparent 60%),
+        var(--bg);
+      color:var(--text);
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:18px;
+    }
+    .wrap{width:100%;max-width:420px}
+    .badge{
+      display:inline-flex;gap:10px;align-items:center;
+      font-size:13px;color:var(--muted);
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.10);
+      padding:10px 12px;border-radius:999px;margin-bottom:14px;
+      backdrop-filter:blur(10px);
+    }
+    .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 18px rgba(0,255,87,.55)}
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .hero{padding:18px 18px 16px}
+    .title{margin:0 0 10px;font-size:22px;line-height:1.15}
+    .sub{margin:0;color:var(--muted);font-size:14px;line-height:1.5}
+    .offer{
+      margin-top:14px;
+      background:rgba(0,0,0,.30);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:14px;
+      padding:14px;
+    }
+    .offerRow{display:flex;gap:12px;align-items:flex-start}
+    .gift{
+      width:40px;height:40px;border-radius:12px;
+      background:radial-gradient(circle at 30% 30%, rgba(0,255,87,.35), rgba(0,209,255,.15));
+      border:1px solid rgba(255,255,255,.10);
+      display:flex;align-items:center;justify-content:center;
+      font-size:18px;flex:0 0 auto;
+    }
+    .offerText b{display:block;font-size:16px;margin-bottom:4px}
+    .offerText span{color:var(--muted);font-size:13px;line-height:1.35}
+    .list{margin:14px 0 0;padding:0;list-style:none;display:grid;gap:10px}
+    .li{display:flex;gap:10px;align-items:flex-start;font-size:14px;line-height:1.35}
+    .check{
+      width:18px;height:18px;border-radius:6px;
+      background:rgba(0,255,87,.18);
+      border:1px solid rgba(0,255,87,.35);
+      display:flex;align-items:center;justify-content:center;
+      flex:0 0 auto;margin-top:1px;font-size:12px;
+    }
+    .steps{margin-top:14px;display:grid;gap:10px}
+    .step{
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:14px;
+      padding:12px;display:flex;gap:10px;align-items:flex-start;
+    }
+    .num{
+      width:26px;height:26px;border-radius:9px;
+      background:rgba(0,209,255,.16);
+      border:1px solid rgba(0,209,255,.30);
+      display:flex;align-items:center;justify-content:center;
+      font-weight:800;flex:0 0 auto;
+    }
+    .step b{display:block;font-size:14px;margin-bottom:2px}
+    .step span{color:var(--muted);font-size:12.5px;line-height:1.35}
+    .ctaBox{
+      padding:16px 18px 18px;
+      border-top:1px solid rgba(255,255,255,.08);
+      background:rgba(0,0,0,.18);
+    }
+    .btn{
+      width:100%;
+      border:0;border-radius:14px;
+      padding:14px 16px;
+      font-weight:900;font-size:16px;
+      cursor:pointer;
+      background:var(--accent);
+      color:#061006;
+      box-shadow:0 12px 26px rgba(0,255,87,.22);
+      transition:transform .08s ease, filter .12s ease;
+    }
+    .btn:active{transform:translateY(1px)}
+    .btn:disabled{cursor:not-allowed;filter:grayscale(.2) brightness(.9);opacity:.9}
+    .hintRow{
+      margin-top:10px;display:flex;justify-content:space-between;gap:10px;
+      font-size:12px;color:var(--muted);flex-wrap:wrap;
+    }
+    .pill{
+      display:inline-flex;gap:8px;align-items:center;
+      padding:8px 10px;border-radius:999px;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.08);
+    }
+    .foot{
+      margin-top:12px;text-align:center;
+      color:rgba(255,255,255,.55);
+      font-size:11px;line-height:1.35;
+    }
+    .loader{display:none;margin-top:10px;color:var(--muted);font-size:12px;text-align:center}
+    .loader.show{display:block}
+    .sticky{
+      position:fixed;left:0;right:0;bottom:12px;
+      display:flex;justify-content:center;
+      pointer-events:none;padding:0 12px;
+    }
+    .stickyInner{
+      width:100%;max-width:420px;pointer-events:auto;
+      background:rgba(20,20,27,.84);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:16px;padding:10px;
+      box-shadow:0 18px 50px rgba(0,0,0,.55);
+      backdrop-filter:blur(12px);
+    }
+    .btnSmall{
+      width:100%;
+      border:0;border-radius:12px;
+      padding:12px 14px;
+      font-weight:900;font-size:15px;
+      cursor:pointer;
+      background:linear-gradient(90deg, var(--accent), var(--accent2));
+      color:#061006;
+    }
+  </style>
 </head>
+
 <body>
-    <div class="container">
-        <h1>🎁 Bono exclusivo para Chile</h1>
-        <p>Regístrate y accede a tu bono especial para nuevos usuarios.</p>
+  <div class="wrap">
+    <div class="badge"><span class="dot"></span><span>Chile · Registro rápido</span></div>
 
-        <a class="btn" href="https://onlinepnplnk.com/4TgqSF6i/?subId2=CL" 
-           Activar bono
-        </a>
+    <div class="card">
+      <div class="hero">
+        <h1 class="title">🎁 Bono de bienvenida para nuevos usuarios</h1>
+        <p class="sub">Regístrate en menos de 1 minuto y accede a tu bonificación. Proceso sencillo y seguro.</p>
 
-        <div class="note">
-            Solo para mayores de 18 años • Chile
+        <div class="offer">
+          <div class="offerRow">
+            <div class="gift">🎁</div>
+            <div class="offerText">
+              <b>Bonificación del primer depósito</b>
+              <span>Promoción disponible para usuarios en Chile (según condiciones).</span>
+            </div>
+          </div>
+
+          <ul class="list">
+            <li class="li"><span class="check">✓</span><span>Registro por teléfono o email.</span></li>
+            <li class="li"><span class="check">✓</span><span>Métodos de pago locales disponibles.</span></li>
+            <li class="li"><span class="check">✓</span><span>Soporte 24/7 y proceso seguro.</span></li>
+          </ul>
+
+          <div class="steps">
+            <div class="step"><div class="num">1</div><div><b>Crea tu cuenta</b><span>Completa el registro.</span></div></div>
+            <div class="step"><div class="num">2</div><div><b>Confirma y entra</b><span>Acceso inmediato.</span></div></div>
+            <div class="step"><div class="num">3</div><div><b>Activa el bono</b><span>Primer depósito para activar la promoción.</span></div></div>
+          </div>
         </div>
+      </div>
+
+      <div class="ctaBox">
+        <button id="ctaMain" class="btn" type="button">Activar bono ahora</button>
+        <div id="loader" class="loader">Redirigiendo…</div>
+
+        <div class="hintRow">
+          <span class="pill">⏱️ 1 minuto</span>
+          <span class="pill">🔒 Seguro</span>
+          <span class="pill">🔞 +18</span>
+        </div>
+
+        <div class="foot">
+          Solo para mayores de 18 años. Juega con responsabilidad.
+        </div>
+      </div>
     </div>
-<script>
-(function () {
-  const OFFER_BASE = "https://onlinepnplnk.com/4TgqSF6i/";
-  const fixed = new URLSearchParams({ subId2: "CL" });
+  </div>
 
-  const qs = new URLSearchParams(window.location.search);
-  const subid = qs.get("subid");
+  <div class="sticky">
+    <div class="stickyInner">
+      <button id="ctaSticky" class="btnSmall" type="button">Activar bono</button>
+    </div>
+  </div>
 
-  if (subid) fixed.set("subid", subid);
+  <script>
+    // ОФФЕР (уже готово, менять не нужно)
+    const OFFER_BASE = "https://onlinepnplnk.com/4TgqSF6i/";
+    const FIXED = { subId2: "CL" };
 
-  const finalUrl = OFFER_BASE + "?" + fixed.toString();
+    // Параметры, которые перенесём дальше, если они есть в URL ленда
+    const PASS_KEYS = ["subid","clickid","fbclid","utm_source","utm_medium","utm_campaign","utm_content","utm_term"];
 
-  document.querySelectorAll('a.btn').forEach(a => {
-    a.href = finalUrl;
-  });
-})();
-</script>
+    function buildOfferUrl(){
+      const page = new URLSearchParams(window.location.search);
+      const out = new URLSearchParams();
+
+      // фиксируем CL
+      for (const k in FIXED) out.set(k, FIXED[k]);
+
+      // переносим subid/fbclid/utm_*
+      for (const key of PASS_KEYS){
+        const v = page.get(key);
+        if (v && String(v).trim().length > 0) out.set(key, String(v).trim());
+      }
+
+      return OFFER_BASE + "?" + out.toString();
+    }
+
+    function go(){
+      const url = buildOfferUrl();
+      const b1 = document.getElementById("ctaMain");
+      const b2 = document.getElementById("ctaSticky");
+      const loader = document.getElementById("loader");
+      b1.disabled = true;
+      b2.disabled = true;
+      loader.classList.add("show");
+      // без target=_blank — открываем в этом же окне
+      window.location.href = url;
+    }
+
+    document.getElementById("ctaMain").addEventListener("click", go);
+    document.getElementById("ctaSticky").addEventListener("click", go);
+  </script>
 </body>
 </html>
+
