@@ -4,18 +4,14 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Bono de bienvenida | Chile</title>
-  <meta name="description" content="Bono de bienvenida para nuevos usuarios en Chile. Registro rápido y seguro. Solo +18." />
+  <meta name="description" content="Bono de bienvenida para nuevos usuarios en Chile. Solo +18." />
   <meta name="theme-color" content="#0b0b0f" />
   <style>
     :root{
-      --bg:#0b0b0f;
-      --card:#14141b;
-      --muted:#a6a6b3;
-      --text:#ffffff;
-      --accent:#00ff57;
-      --accent2:#00d1ff;
-      --shadow:0 18px 50px rgba(0,0,0,.55);
-      --radius:18px;
+      --bg:#0b0b0f; --card:#14141b; --muted:#a6a6b3; --text:#ffffff;
+      --accent:#00ff57; --accent2:#00d1ff;
+      --shadow:0 18px 50px rgba(0,0,0,.55); --radius:18px;
+      --border:rgba(255,255,255,.10);
     }
     *{box-sizing:border-box}
     body{
@@ -27,9 +23,7 @@
         var(--bg);
       color:var(--text);
       min-height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
+      display:flex; align-items:center; justify-content:center;
       padding:18px;
     }
     .wrap{width:100%;max-width:420px}
@@ -37,14 +31,14 @@
       display:inline-flex;gap:10px;align-items:center;
       font-size:13px;color:var(--muted);
       background:rgba(255,255,255,.06);
-      border:1px solid rgba(255,255,255,.10);
+      border:1px solid var(--border);
       padding:10px 12px;border-radius:999px;margin-bottom:14px;
       backdrop-filter:blur(10px);
     }
     .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 18px rgba(0,255,87,.55)}
     .card{
       background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
-      border:1px solid rgba(255,255,255,.10);
+      border:1px solid var(--border);
       border-radius:var(--radius);
       box-shadow:var(--shadow);
       overflow:hidden;
@@ -52,25 +46,58 @@
     .hero{padding:18px 18px 16px}
     .title{margin:0 0 10px;font-size:22px;line-height:1.15}
     .sub{margin:0;color:var(--muted);font-size:14px;line-height:1.5}
-    .offer{
+
+    .panel{
       margin-top:14px;
       background:rgba(0,0,0,.30);
       border:1px solid rgba(255,255,255,.10);
       border-radius:14px;
       padding:14px;
     }
-    .offerRow{display:flex;gap:12px;align-items:flex-start}
-    .gift{
-      width:40px;height:40px;border-radius:12px;
-      background:radial-gradient(circle at 30% 30%, rgba(0,255,87,.35), rgba(0,209,255,.15));
-      border:1px solid rgba(255,255,255,.10);
-      display:flex;align-items:center;justify-content:center;
-      font-size:18px;flex:0 0 auto;
+
+    .btn{
+      width:100%;
+      border:0;border-radius:14px;
+      padding:14px 16px;
+      font-weight:900;font-size:16px;
+      cursor:pointer;
+      background:var(--accent);
+      color:#061006;
+      box-shadow:0 12px 26px rgba(0,255,87,.22);
+      transition:transform .08s ease;
     }
-    .offerText b{display:block;font-size:16px;margin-bottom:4px}
-    .offerText span{color:var(--muted);font-size:13px;line-height:1.35}
-    .list{margin:14px 0 0;padding:0;list-style:none;display:grid;gap:10px}
-    .li{display:flex;gap:10px;align-items:flex-start;font-size:14px;line-height:1.35}
+    .btn:active{transform:translateY(1px)}
+    .btn2{
+      width:100%;
+      border:1px solid rgba(255,255,255,.18);
+      border-radius:14px;
+      padding:14px 16px;
+      font-weight:900;font-size:16px;
+      cursor:pointer;
+      background:rgba(255,255,255,.06);
+      color:var(--text);
+      margin-top:10px;
+    }
+
+    .ctaBox{
+      padding:16px 18px 18px;
+      border-top:1px solid rgba(255,255,255,.08);
+      background:rgba(0,0,0,.18);
+    }
+
+    .hintRow{
+      margin-top:10px;display:flex;justify-content:space-between;gap:10px;
+      font-size:12px;color:var(--muted);flex-wrap:wrap;
+    }
+    .pill{
+      display:inline-flex;gap:8px;align-items:center;
+      padding:8px 10px;border-radius:999px;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.08);
+    }
+
+    .list{margin:12px 0 0;padding:0;list-style:none;display:grid;gap:10px}
+    .li{display:flex;gap:10px;align-items:flex-start;font-size:14px;line-height:1.35;color:rgba(255,255,255,.92)}
     .check{
       width:18px;height:18px;border-radius:6px;
       background:rgba(0,255,87,.18);
@@ -78,7 +105,8 @@
       display:flex;align-items:center;justify-content:center;
       flex:0 0 auto;margin-top:1px;font-size:12px;
     }
-    .steps{margin-top:14px;display:grid;gap:10px}
+
+    .steps{margin-top:12px;display:grid;gap:10px}
     .step{
       background:rgba(255,255,255,.04);
       border:1px solid rgba(255,255,255,.08);
@@ -94,34 +122,7 @@
     }
     .step b{display:block;font-size:14px;margin-bottom:2px}
     .step span{color:var(--muted);font-size:12.5px;line-height:1.35}
-    .ctaBox{
-      padding:16px 18px 18px;
-      border-top:1px solid rgba(255,255,255,.08);
-      background:rgba(0,0,0,.18);
-    }
-    .btn{
-      width:100%;
-      border:0;border-radius:14px;
-      padding:14px 16px;
-      font-weight:900;font-size:16px;
-      cursor:pointer;
-      background:var(--accent);
-      color:#061006;
-      box-shadow:0 12px 26px rgba(0,255,87,.22);
-      transition:transform .08s ease, filter .12s ease;
-    }
-    .btn:active{transform:translateY(1px)}
-    .btn:disabled{cursor:not-allowed;filter:grayscale(.2) brightness(.9);opacity:.9}
-    .hintRow{
-      margin-top:10px;display:flex;justify-content:space-between;gap:10px;
-      font-size:12px;color:var(--muted);flex-wrap:wrap;
-    }
-    .pill{
-      display:inline-flex;gap:8px;align-items:center;
-      padding:8px 10px;border-radius:999px;
-      background:rgba(255,255,255,.05);
-      border:1px solid rgba(255,255,255,.08);
-    }
+
     .foot{
       margin-top:12px;text-align:center;
       color:rgba(255,255,255,.55);
@@ -129,6 +130,7 @@
     }
     .loader{display:none;margin-top:10px;color:var(--muted);font-size:12px;text-align:center}
     .loader.show{display:block}
+
     .sticky{
       position:fixed;left:0;right:0;bottom:12px;
       display:flex;justify-content:center;
@@ -137,7 +139,7 @@
     .stickyInner{
       width:100%;max-width:420px;pointer-events:auto;
       background:rgba(20,20,27,.84);
-      border:1px solid rgba(255,255,255,.10);
+      border:1px solid var(--border);
       border-radius:16px;padding:10px;
       box-shadow:0 18px 50px rgba(0,0,0,.55);
       backdrop-filter:blur(12px);
@@ -151,86 +153,110 @@
       background:linear-gradient(90deg, var(--accent), var(--accent2));
       color:#061006;
     }
+
+    .hidden{display:none !important}
+    .msg{
+      margin-top:10px;
+      padding:12px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.05);
+      color:rgba(255,255,255,.9);
+      font-size:13px;
+      line-height:1.35;
+    }
   </style>
 </head>
 
 <body>
   <div class="wrap">
-    <div class="badge"><span class="dot"></span><span>Chile · Registro rápido</span></div>
+    <div class="badge"><span class="dot"></span><span>Chile · Disponible · Android</span></div>
 
     <div class="card">
-      <div class="hero">
-        <h1 class="title">🎁 Bono de bienvenida para nuevos usuarios</h1>
-        <p class="sub">Regístrate en menos de 1 minuto y accede a tu bonificación. Proceso sencillo y seguro.</p>
+      <!-- ЭКРАН 1: 18+ -->
+      <div id="gate" class="hero">
+        <h1 class="title">Antes de continuar</h1>
+        <p class="sub">¿Eres mayor de 18 años?</p>
 
-        <div class="offer">
-          <div class="offerRow">
-            <div class="gift">🎁</div>
-            <div class="offerText">
-              <b>Bonificación del primer depósito</b>
-              <span>Promoción disponible para usuarios en Chile (según condiciones).</span>
-            </div>
-          </div>
-
-          <ul class="list">
-            <li class="li"><span class="check">✓</span><span>Registro por teléfono o email.</span></li>
-            <li class="li"><span class="check">✓</span><span>Métodos de pago locales disponibles.</span></li>
-            <li class="li"><span class="check">✓</span><span>Soporte 24/7 y proceso seguro.</span></li>
-          </ul>
-
-          <div class="steps">
-            <div class="step"><div class="num">1</div><div><b>Crea tu cuenta</b><span>Completa el registro.</span></div></div>
-            <div class="step"><div class="num">2</div><div><b>Confirma y entra</b><span>Acceso inmediato.</span></div></div>
-            <div class="step"><div class="num">3</div><div><b>Activa el bono</b><span>Primer depósito para activar la promoción.</span></div></div>
+        <div class="panel">
+          <button id="yes18" class="btn" type="button">Sí, soy mayor de 18</button>
+          <button id="no18" class="btn2" type="button">No</button>
+          <div id="noMsg" class="msg hidden">
+            Lo sentimos. Esta oferta es solo para mayores de 18 años.
           </div>
         </div>
+
+        <div class="foot">Solo para mayores de 18 años · Juega con responsabilidad</div>
       </div>
 
-      <div class="ctaBox">
-        <button id="ctaMain" class="btn" type="button">Activar bono ahora</button>
-        <div id="loader" class="loader">Redirigiendo…</div>
+      <!-- ЭКРАН 2: ОФФЕР -->
+      <div id="offer" class="hidden">
+        <div class="hero">
+          <h1 class="title">🎁 Bono del primer depósito</h1>
+          <p class="sub">Regístrate en menos de 1 minuto. La bonificación se desbloquea después del <b>primer depósito</b>.</p>
 
-        <div class="hintRow">
-          <span class="pill">⏱️ 1 minuto</span>
-          <span class="pill">🔒 Seguro</span>
-          <span class="pill">🔞 +18</span>
+          <div class="panel">
+            <ul class="list">
+              <li class="li"><span class="check">✓</span><span>Registro por teléfono o email.</span></li>
+              <li class="li"><span class="check">✓</span><span>Métodos de pago locales disponibles.</span></li>
+              <li class="li"><span class="check">✓</span><span>Acceso inmediato tras confirmar.</span></li>
+            </ul>
+
+            <div class="steps">
+              <div class="step"><div class="num">1</div><div><b>Regístrate</b><span>Crea tu cuenta en pocos pasos.</span></div></div>
+              <div class="step"><div class="num">2</div><div><b>Entra</b><span>Acceso inmediato.</span></div></div>
+              <div class="step"><div class="num">3</div><div><b>Primer depósito</b><span>Realiza tu depósito para desbloquear la promoción.</span></div></div>
+            </div>
+          </div>
         </div>
 
-        <div class="foot">
-          Solo para mayores de 18 años. Juega con responsabilidad.
+        <div class="ctaBox">
+          <button id="ctaMain" class="btn" type="button">Registrarme y activar</button>
+          <div id="loader" class="loader">Redirigiendo…</div>
+
+          <div class="hintRow">
+            <span class="pill">⏱️ 1 minuto</span>
+            <span class="pill">🔒 Seguro</span>
+            <span class="pill">🔞 +18</span>
+          </div>
+
+          <div class="foot">Solo para mayores de 18 años. Juega con responsabilidad.</div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="sticky">
+  <!-- Sticky CTA (появится после 18+) -->
+  <div id="sticky" class="sticky hidden">
     <div class="stickyInner">
-      <button id="ctaSticky" class="btnSmall" type="button">Activar bono</button>
+      <button id="ctaSticky" class="btnSmall" type="button">Activar ahora</button>
     </div>
   </div>
 
   <script>
-    // ОФФЕР (уже готово, менять не нужно)
+    // ОФФЕР (уже готово — менять не нужно)
     const OFFER_BASE = "https://onlinepnplnk.com/4TgqSF6i/";
     const FIXED = { subId2: "CL" };
 
-    // Параметры, которые перенесём дальше, если они есть в URL ленда
+    // Переносим параметры из URL ленда дальше в оффер
     const PASS_KEYS = ["subid","clickid","fbclid","utm_source","utm_medium","utm_campaign","utm_content","utm_term"];
 
     function buildOfferUrl(){
       const page = new URLSearchParams(window.location.search);
       const out = new URLSearchParams();
-
-      // фиксируем CL
       for (const k in FIXED) out.set(k, FIXED[k]);
-
-      // переносим subid/fbclid/utm_*
       for (const key of PASS_KEYS){
         const v = page.get(key);
         if (v && String(v).trim().length > 0) out.set(key, String(v).trim());
       }
-
       return OFFER_BASE + "?" + out.toString();
+    }
+
+    function showOffer(){
+      document.getElementById("gate").classList.add("hidden");
+      document.getElementById("offer").classList.remove("hidden");
+      document.getElementById("sticky").classList.remove("hidden");
+      try { localStorage.setItem("age_ok", "1"); } catch(e){}
     }
 
     function go(){
@@ -238,16 +264,25 @@
       const b1 = document.getElementById("ctaMain");
       const b2 = document.getElementById("ctaSticky");
       const loader = document.getElementById("loader");
-      b1.disabled = true;
-      b2.disabled = true;
+      b1.disabled = true; b2.disabled = true;
       loader.classList.add("show");
-      // без target=_blank — открываем в этом же окне
-      window.location.href = url;
+      window.location.href = url; // в этом же окне
     }
 
+    // Gate actions
+    document.getElementById("yes18").addEventListener("click", showOffer);
+    document.getElementById("no18").addEventListener("click", () => {
+      document.getElementById("noMsg").classList.remove("hidden");
+    });
+
+    // CTA actions
     document.getElementById("ctaMain").addEventListener("click", go);
     document.getElementById("ctaSticky").addEventListener("click", go);
+
+    // Если уже подтвердил 18+ ранее — сразу показываем оффер
+    try {
+      if (localStorage.getItem("age_ok") === "1") showOffer();
+    } catch(e){}
   </script>
 </body>
 </html>
-
