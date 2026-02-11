@@ -5,14 +5,26 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <meta name="robots" content="noindex,nofollow" />
   <title>Bono exclusivo para Chile</title>
+
   <style>
     :root{
-      --bg:#0b0b0f; --card:#14141b; --muted:#a7a7b5; --text:#fff;
-      --accent:#14ff6a; --accent2:#00c853; --shadow:0 18px 60px rgba(0,0,0,.55);
-      --radius:18px; --w:420px;
+      --bg:#0b0b0f;
+      --card:#14141b;
+      --muted:#a7a7b5;
+      --text:#fff;
+      --accent:#14ff6a;
+      --accent2:#00c853;
+      --shadow:0 18px 60px rgba(0,0,0,.55);
+      --radius:18px;
+      --w:420px;
+
+      /* высота нижней sticky-панели (используется для отступа) */
+      --sticky-h: 86px;
     }
-    *{box-sizing:border-box}
-    html,body{height:100%}
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+
     body{
       margin:0;
       font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
@@ -21,10 +33,16 @@
         radial-gradient(900px 500px at 30% 70%, rgba(0,200,83,.10), transparent 55%),
         var(--bg);
       color:var(--text);
-      display:flex; align-items:center; justify-content:center;
-      padding:22px 14px 92px;
+
+      /* важное: даём место снизу под sticky (на мобиле) */
+      padding: 22px 14px calc(22px + var(--sticky-h) + env(safe-area-inset-bottom));
+      display:flex;
+      align-items:center;
+      justify-content:center;
     }
-    .wrap{width:100%;max-width:var(--w)}
+
+    .wrap{ width:100%; max-width:var(--w); }
+
     .card{
       background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
       border:1px solid rgba(255,255,255,.06);
@@ -32,22 +50,44 @@
       box-shadow:var(--shadow);
       overflow:hidden;
     }
-    .top{padding:18px 18px 12px;border-bottom:1px solid rgba(255,255,255,.06)}
+
+    .top{
+      padding:18px 18px 12px;
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
     .badge{
-      display:inline-flex;align-items:center;gap:8px;
-      font-size:12px;color:var(--muted);
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      font-size:12px;
+      color:var(--muted);
       background:rgba(255,255,255,.06);
       border:1px solid rgba(255,255,255,.08);
-      padding:6px 10px;border-radius:999px;
+      padding:6px 10px;
+      border-radius:999px;
     }
-    h1{margin:12px 0 8px;font-size:22px;line-height:1.15;letter-spacing:.2px}
-    .sub{margin:0;color:var(--muted);font-size:14px;line-height:1.35}
+    h1{
+      margin:12px 0 8px;
+      font-size:22px;
+      line-height:1.15;
+      letter-spacing:.2px;
+    }
+    .sub{
+      margin:0;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.35;
+    }
 
-    .mid{padding:14px 18px 14px}
-    .grid{display:grid;gap:10px;margin-top:12px}
+    .mid{ padding:14px 18px 14px; }
+    .grid{ display:grid; gap:10px; margin-top:12px; }
+
     .item{
-      display:flex;gap:10px;align-items:flex-start;
-      padding:10px 12px;border-radius:14px;
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      padding:10px 12px;
+      border-radius:14px;
       background:rgba(255,255,255,.04);
       border:1px solid rgba(255,255,255,.06);
     }
@@ -56,61 +96,117 @@
       margin-top:6px;flex:0 0 auto;
       box-shadow:0 0 0 4px rgba(20,255,106,.12);
     }
-    .item b{font-size:13.5px;display:block;margin-bottom:2px}
-    .item span{color:var(--muted);font-size:12.5px;line-height:1.25;display:block}
+    .item b{ font-size:13.5px; display:block; margin-bottom:2px; }
+    .item span{ color:var(--muted); font-size:12.5px; line-height:1.25; display:block; }
 
-    .steps{margin:14px 0 0;padding:0;list-style:none;display:grid;gap:8px}
-    .steps li{display:flex;gap:10px;align-items:flex-start;color:var(--muted);font-size:13px;line-height:1.25}
+    .steps{
+      margin:14px 0 0;
+      padding:0;
+      list-style:none;
+      display:grid;
+      gap:8px;
+    }
+    .steps li{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.25;
+    }
     .num{
       width:22px;height:22px;border-radius:9px;
       background:rgba(20,255,106,.14);
       border:1px solid rgba(20,255,106,.22);
       color:var(--accent);
       display:flex;align-items:center;justify-content:center;
-      font-weight:700;font-size:12px;flex:0 0 auto;margin-top:1px;
+      font-weight:700;font-size:12px;
+      flex:0 0 auto;margin-top:1px;
     }
 
     .ctaBox{
       padding:14px 18px 18px;
       border-top:1px solid rgba(255,255,255,.06);
-      display:grid;gap:10px;
+      display:grid;
+      gap:10px;
     }
     .checkRow{
-      display:flex;gap:10px;align-items:flex-start;
-      padding:10px 12px;border-radius:14px;
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      padding:10px 12px;
+      border-radius:14px;
       background:rgba(255,255,255,.04);
       border:1px solid rgba(255,255,255,.06);
-      color:var(--muted);font-size:13px;line-height:1.25;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.25;
     }
-    .checkRow input{margin-top:3px;accent-color:var(--accent)}
+    .checkRow input{ margin-top:3px; accent-color:var(--accent); }
+
     .btn{
-      width:100%;border:0;border-radius:14px;
-      padding:14px 14px;font-weight:800;letter-spacing:.3px;
-      cursor:pointer;background:linear-gradient(90deg, var(--accent), var(--accent2));
-      color:#06210f;font-size:16px;
+      width:100%;
+      border:0;
+      border-radius:14px;
+      padding:14px 14px;
+      font-weight:800;
+      letter-spacing:.3px;
+      cursor:pointer;
+      background:linear-gradient(90deg, var(--accent), var(--accent2));
+      color:#06210f;
+      font-size:16px;
       box-shadow:0 12px 28px rgba(20,255,106,.18);
       transition:transform .06s ease, filter .2s ease, opacity .2s ease;
     }
-    .btn:active{transform:translateY(1px)}
-    .btn[disabled]{opacity:.45;cursor:not-allowed;filter:grayscale(.35);box-shadow:none}
-    .note{text-align:center;color:var(--muted);font-size:11.5px;line-height:1.35}
+    .btn:active{ transform:translateY(1px); }
+    .btn[disabled]{ opacity:.45; cursor:not-allowed; filter:grayscale(.35); box-shadow:none; }
+
+    .note{
+      text-align:center;
+      color:var(--muted);
+      font-size:11.5px;
+      line-height:1.35;
+    }
 
     .warn{
-      display:none;padding:10px 12px;border-radius:14px;
+      display:none;
+      padding:10px 12px;
+      border-radius:14px;
       background:rgba(255,77,79,.10);
       border:1px solid rgba(255,77,79,.22);
-      color:#ffd7d8;font-size:12.5px;line-height:1.25;
+      color:#ffd7d8;
+      font-size:12.5px;
+      line-height:1.25;
     }
-    .warn.show{display:block}
+    .warn.show{ display:block; }
 
-    .sticky{
-      position:fixed;left:0;right:0;bottom:0;
-      padding:10px 12px 14px;
-      background:linear-gradient(180deg, transparent, rgba(0,0,0,.60), rgba(0,0,0,.88));
-      display:flex;justify-content:center;pointer-events:none;
+    /* sticky: по умолчанию СКРЫТА, включаем только на мобилке */
+    .sticky{ display:none; }
+
+    @media (max-width: 768px){
+      .sticky{
+        display:flex;
+        position:fixed;
+        left:0; right:0; bottom:0;
+        height: var(--sticky-h);
+        padding:10px 12px calc(10px + env(safe-area-inset-bottom));
+        background:linear-gradient(180deg, transparent, rgba(0,0,0,.60), rgba(0,0,0,.90));
+        justify-content:center;
+        align-items:flex-end;
+      }
+      .sticky .inner{ width:100%; max-width:var(--w); }
+      .mini{ font-size:12px; color:var(--muted); text-align:center; margin-top:6px; }
     }
-    .sticky .inner{width:100%;max-width:var(--w);pointer-events:auto}
-    .mini{font-size:12px;color:var(--muted);text-align:center;margin-top:6px}
+
+    /* если экран низкий — даём карточке внутренний скролл, чтобы всё было “нормально” */
+    @media (max-height: 740px){
+      .card{
+        max-height: calc(100vh - 22px - 22px - var(--sticky-h) - env(safe-area-inset-bottom));
+        overflow:auto;
+      }
+      body{ align-items:flex-start; }
+      .wrap{ margin-top:8px; }
+    }
   </style>
 </head>
 
@@ -127,14 +223,14 @@
         <div class="grid">
           <div class="item"><div class="dot"></div><div><b>Registro en menos de 1 minuto</b><span>Teléfono o email (según formulario).</span></div></div>
           <div class="item"><div class="dot"></div><div><b>Métodos de pago locales</b><span>Opciones disponibles para Chile.</span></div></div>
-          <div class="item"><div class="dot"></div><div><b>Acceso inmediato</b><span>Continúa directo al registro.</span></div></div>
+          <div class="item"><div class="dot"></div><div><b>Soporte 24/7</b><span>Ayuda rápida si la necesitas.</span></div></div>
         </div>
 
         <ul class="steps">
-          <li><div class="num">1</div><div>Regístrate.</div></li>
+          <li><div class="num">1</div><div>Regístrate gratis.</div></li>
           <li><div class="num">2</div><div>Confirma tu cuenta.</div></li>
-          <li><div class="num">3</div><div>Primer depósito (según condiciones).</div></li>
-          <li><div class="num">4</div><div>Activa la promoción.</div></li>
+          <li><div class="num">3</div><div>Realiza tu primer depósito.</div></li>
+          <li><div class="num">4</div><div>Activa el bono y comienza.</div></li>
         </ul>
       </div>
 
@@ -146,9 +242,9 @@
           <span>Confirmo que tengo <b>18+</b> y acepto los términos y la política de privacidad.</span>
         </label>
 
-        <button class="btn" id="ctaBtn">Abrir registro</button>
+        <button class="btn" id="ctaBtn">Activar bono</button>
 
-        <div class="note">Solo para mayores de 18 años · Juega con responsabilidad.</div>
+        <div class="note">Solo para mayores de 18 años · Chile · Juega con responsabilidad.</div>
 
         <noscript>
           <div class="warn show" style="margin-top:10px;">
@@ -164,7 +260,7 @@
 
   <div class="sticky">
     <div class="inner">
-      <button class="btn" id="ctaBtnSticky">Abrir registro</button>
+      <button class="btn" id="ctaBtnSticky">Activar bono</button>
       <div class="mini">Pulsa para continuar</div>
     </div>
   </div>
@@ -203,7 +299,7 @@
         warnBox.classList.add("show");
         return;
       }
-      window.location.href = finalUrl;
+      window.location.href = finalUrl; // в этой же вкладке
     }
 
     ageCheck.addEventListener("change", () => {
