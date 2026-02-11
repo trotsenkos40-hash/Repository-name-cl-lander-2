@@ -1,4 +1,4 @@
-!doctype html>
+<!doctype html>
 <html lang="es-CL">
 <head>
   <meta charset="UTF-8" />
@@ -7,108 +7,226 @@
   <title>Bono exclusivo para Chile</title>
   <style>
     :root{
-      --bg:#0b0b0f; --card:#14141b; --muted:#a7a7b5; --text:#fff;
-      --accent:#14ff6a; --accent2:#00c853; --line:#232332;
-      --shadow:0 18px 60px rgba(0,0,0,.55);
-      --radius:18px; --w:420px;
+      --bg:#0b0b0f;
+      --card:#14141b;
+      --muted:#a7a7b5;
+      --text:#ffffff;
+      --accent:#14ff6a;
+      --accent2:#00c853;
+      --danger:#ff4d4f;
+      --line:#232332;
+      --shadow: 0 18px 60px rgba(0,0,0,.55);
+      --radius: 18px;
+      --w: 420px;
     }
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
       margin:0;
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      background:
-        radial-gradient(1200px 600px at 60% 30%, rgba(20,255,106,.12), transparent 55%),
-        radial-gradient(900px 500px at 30% 70%, rgba(0,200,83,.10), transparent 55%),
-        var(--bg);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: radial-gradient(1200px 600px at 60% 30%, rgba(20,255,106,.12), transparent 55%),
+                  radial-gradient(900px 500px at 30% 70%, rgba(0,200,83,.10), transparent 55%),
+                  var(--bg);
       color:var(--text);
       display:flex;
       align-items:center;
       justify-content:center;
-      padding:22px 14px 92px;
+      padding: 22px 14px 92px;
     }
-    .wrap{width:100%;max-width:var(--w);position:relative}
+    .wrap{
+      width:100%;
+      max-width: var(--w);
+      position:relative;
+    }
     .card{
-      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
-      border:1px solid rgba(255,255,255,.06);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
       overflow:hidden;
     }
-    .top{padding:18px 18px 12px;border-bottom:1px solid rgba(255,255,255,.06)}
-    .badge{
-      display:inline-flex;align-items:center;gap:8px;
-      font-size:12px;color:var(--muted);
-      background:rgba(255,255,255,.06);
-      border:1px solid rgba(255,255,255,.08);
-      padding:6px 10px;border-radius:999px;
+    .top{
+      padding:18px 18px 12px;
+      border-bottom: 1px solid rgba(255,255,255,.06);
     }
-    h1{margin:12px 0 8px;font-size:22px;line-height:1.15;letter-spacing:.2px}
-    .sub{margin:0;color:var(--muted);font-size:14px;line-height:1.35}
-    .mid{padding:14px 18px 14px}
-    .grid{display:grid;gap:10px;margin-top:12px}
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      font-size: 12px;
+      color: var(--muted);
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.08);
+      padding:6px 10px;
+      border-radius: 999px;
+    }
+    h1{
+      margin: 12px 0 8px;
+      font-size: 22px;
+      line-height:1.15;
+      letter-spacing:.2px;
+    }
+    .sub{
+      margin:0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height:1.35;
+    }
+    .mid{
+      padding: 14px 18px 14px;
+    }
+    .grid{
+      display:grid;
+      gap:10px;
+      margin-top:12px;
+    }
     .item{
-      display:flex;gap:10px;align-items:flex-start;
-      padding:10px 12px;border-radius:14px;
-      background:rgba(255,255,255,.04);
-      border:1px solid rgba(255,255,255,.06);
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.06);
     }
     .dot{
-      width:9px;height:9px;border-radius:999px;background:var(--accent);
-      margin-top:6px;flex:0 0 auto;
-      box-shadow:0 0 0 4px rgba(20,255,106,.12);
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: var(--accent);
+      margin-top: 6px;
+      flex: 0 0 auto;
+      box-shadow: 0 0 0 4px rgba(20,255,106,.12);
     }
-    .item b{font-size:13.5px;display:block;margin-bottom:2px}
-    .item span{color:var(--muted);font-size:12.5px;line-height:1.25;display:block}
-    .steps{margin:14px 0 0;padding:0;list-style:none;display:grid;gap:8px}
-    .steps li{display:flex;gap:10px;align-items:flex-start;color:var(--muted);font-size:13px;line-height:1.25}
+    .item b{
+      font-size: 13.5px;
+      display:block;
+      margin-bottom:2px;
+    }
+    .item span{
+      color: var(--muted);
+      font-size: 12.5px;
+      line-height:1.25;
+      display:block;
+    }
+    .steps{
+      margin: 14px 0 0;
+      padding: 0;
+      list-style:none;
+      display:grid;
+      gap:8px;
+    }
+    .steps li{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      color: var(--muted);
+      font-size: 13px;
+      line-height:1.25;
+    }
     .num{
-      width:22px;height:22px;border-radius:9px;
-      background:rgba(20,255,106,.14);
+      width: 22px;
+      height: 22px;
+      border-radius: 9px;
+      background: rgba(20,255,106,.14);
       border:1px solid rgba(20,255,106,.22);
-      color:var(--accent);
-      display:flex;align-items:center;justify-content:center;
-      font-weight:700;font-size:12px;flex:0 0 auto;margin-top:1px;
+      color: var(--accent);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:700;
+      font-size: 12px;
+      flex: 0 0 auto;
+      margin-top: 1px;
     }
     .ctaBox{
-      padding:14px 18px 18px;
-      border-top:1px solid rgba(255,255,255,.06);
-      display:grid;gap:10px;
+      padding: 14px 18px 18px;
+      border-top: 1px solid rgba(255,255,255,.06);
+      display:grid;
+      gap:10px;
     }
     .checkRow{
-      display:flex;gap:10px;align-items:flex-start;
-      padding:10px 12px;border-radius:14px;
-      background:rgba(255,255,255,.04);
-      border:1px solid rgba(255,255,255,.06);
-      color:var(--muted);font-size:13px;line-height:1.25;
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.06);
+      color: var(--muted);
+      font-size: 13px;
+      line-height:1.25;
     }
     .checkRow input{margin-top:3px}
     .btn{
-      width:100%;border:0;border-radius:14px;
-      padding:14px 14px;font-weight:800;letter-spacing:.3px;
-      cursor:pointer;background:linear-gradient(90deg, var(--accent), var(--accent2));
-      color:#06210f;font-size:16px;
-      box-shadow:0 12px 28px rgba(20,255,106,.18);
-      transition:transform .06s ease, filter .2s ease, opacity .2s ease;
+      width:100%;
+      border:0;
+      border-radius: 14px;
+      padding: 14px 14px;
+      font-weight: 800;
+      letter-spacing: .3px;
+      cursor:pointer;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      color:#06210f;
+      font-size: 16px;
+      box-shadow: 0 12px 28px rgba(20,255,106,.18);
+      transition: transform .06s ease, filter .2s ease, opacity .2s ease;
     }
-    .btn:active{transform:translateY(1px)}
-    .btn[disabled]{opacity:.45;cursor:not-allowed;filter:grayscale(.35);box-shadow:none}
-    .note{text-align:center;color:var(--muted);font-size:11.5px;line-height:1.35}
+    .btn:active{transform: translateY(1px)}
+    .btn[disabled]{
+      opacity:.45;
+      cursor:not-allowed;
+      filter: grayscale(.35);
+      box-shadow:none;
+    }
+    .note{
+      text-align:center;
+      color: var(--muted);
+      font-size: 11.5px;
+      line-height:1.35;
+    }
+    .faq{
+      margin-top: 10px;
+      border-top: 1px dashed rgba(255,255,255,.12);
+      padding-top: 10px;
+      color: var(--muted);
+      font-size: 12.5px;
+      line-height:1.35;
+    }
+    .faq b{color:#e9e9f7}
+    .sticky{
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 10px 12px 14px;
+      background: linear-gradient(180deg, transparent, rgba(0,0,0,.60), rgba(0,0,0,.88));
+      display:flex;
+      justify-content:center;
+      pointer-events:none;
+    }
+    .sticky .inner{
+      width: 100%;
+      max-width: var(--w);
+      pointer-events:auto;
+    }
+    .mini{
+      font-size: 12px;
+      color: var(--muted);
+      text-align:center;
+      margin-top: 6px;
+    }
     .warn{
-      display:none;padding:10px 12px;border-radius:14px;
-      background:rgba(255,77,79,.10);
-      border:1px solid rgba(255,77,79,.22);
-      color:#ffd7d8;font-size:12.5px;line-height:1.25;
+      display:none;
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: rgba(255,77,79,.10);
+      border: 1px solid rgba(255,77,79,.22);
+      color: #ffd7d8;
+      font-size: 12.5px;
+      line-height:1.25;
     }
     .warn.show{display:block}
-    .sticky{
-      position:fixed;left:0;right:0;bottom:0;
-      padding:10px 12px 14px;
-      background:linear-gradient(180deg, transparent, rgba(0,0,0,.60), rgba(0,0,0,.88));
-      display:flex;justify-content:center;pointer-events:none;
-    }
-    .sticky .inner{width:100%;max-width:var(--w);pointer-events:auto}
-    .mini{font-size:12px;color:var(--muted);text-align:center;margin-top:6px}
     a{color:inherit}
   </style>
 </head>
@@ -147,11 +265,18 @@
 
         <button class="btn" id="ctaBtn" disabled>Activar bono</button>
 
-        <div class="note">Solo para mayores de 18 años · Chile · Juega con responsabilidad.</div>
+        <div class="note">
+          Solo para mayores de 18 años · Chile · Juega con responsabilidad.
+        </div>
+
+        <div class="faq" aria-label="FAQ">
+          <div><b>¿Por qué no veo el bono?</b> En algunos casos se activa después del registro/primer depósito.</div>
+          <div style="margin-top:6px;"><b>¿Es seguro?</b> Puedes requerir verificación de identidad según las normas locales.</div>
+        </div>
 
         <noscript>
           <div class="warn show" style="margin-top:10px;">
-            JavaScript está desactivado.
+            JavaScript está desactivado. Abre el enlace directo:
             <div style="margin-top:6px;">
               <a href="https://onlinepnplnk.com/4TgqSF6i/?subId2=CL">Continuar</a>
             </div>
@@ -161,64 +286,64 @@
     </div>
   </div>
 
-  <div class="sticky">
+  <div class="sticky" aria-hidden="false">
     <div class="inner">
       <button class="btn" id="ctaBtnSticky" disabled>Activar bono</button>
       <div class="mini">Pulsa para continuar</div>
     </div>
   </div>
 
-  <script>
-  (function () {
-    const OFFER_BASE = "https://onlinepnplnk.com/4TgqSF6i/";
-    const FIXED = new URLSearchParams({ subId2: "CL" });
+<script>
+(function () {
+  const OFFER_BASE = "https://onlinepnplnk.com/4TgqSF6i/";
+  const FIXED = new URLSearchParams({ subId2: "CL" });
 
-    const qs = new URLSearchParams(window.location.search);
+  const qs = new URLSearchParams(window.location.search);
 
-    let subid = qs.get("subid");
-    if (!subid) {
-      const m = window.location.pathname.match(/subid[=:_-]?([^\/\?#]+)/i);
-      if (m && m[1]) subid = decodeURIComponent(m[1]);
+  let subid = qs.get("subid");
+  if (!subid) {
+    const m = window.location.pathname.match(/subid[=:_-]?([^\/\?#]+)/i);
+    if (m && m[1]) subid = decodeURIComponent(m[1]);
+  }
+  if (subid) FIXED.set("subid", subid);
+
+  const passthroughKeys = [
+    "fbclid","gclid","wbraid","gbraid",
+    "utm_source","utm_medium","utm_campaign","utm_content","utm_term"
+  ];
+  passthroughKeys.forEach(k => {
+    const v = qs.get(k);
+    if (v) FIXED.set(k, v);
+  });
+
+  const finalUrl = OFFER_BASE + "?" + FIXED.toString();
+
+  const ageCheck = document.getElementById("ageCheck");
+  const warnBox = document.getElementById("warnBox");
+  const ctaBtn = document.getElementById("ctaBtn");
+  const ctaBtnSticky = document.getElementById("ctaBtnSticky");
+
+  function syncButtons() {
+    const ok = !!ageCheck.checked;
+    ctaBtn.disabled = !ok;
+    ctaBtnSticky.disabled = !ok;
+    if (ok) warnBox.classList.remove("show");
+  }
+
+  function go() {
+    if (!ageCheck.checked) {
+      warnBox.classList.add("show");
+      return;
     }
-    if (subid) FIXED.set("subid", subid);
+    window.location.href = finalUrl;
+  }
 
-    const passthroughKeys = [
-      "fbclid","gclid","wbraid","gbraid",
-      "utm_source","utm_medium","utm_campaign","utm_content","utm_term"
-    ];
-    passthroughKeys.forEach(k => {
-      const v = qs.get(k);
-      if (v) FIXED.set(k, v);
-    });
+  ageCheck.addEventListener("change", syncButtons);
+  ctaBtn.addEventListener("click", go);
+  ctaBtnSticky.addEventListener("click", go);
 
-    const finalUrl = OFFER_BASE + "?" + FIXED.toString();
-
-    const ageCheck = document.getElementById("ageCheck");
-    const warnBox = document.getElementById("warnBox");
-    const ctaBtn = document.getElementById("ctaBtn");
-    const ctaBtnSticky = document.getElementById("ctaBtnSticky");
-
-    function syncButtons() {
-      const ok = !!ageCheck.checked;
-      ctaBtn.disabled = !ok;
-      ctaBtnSticky.disabled = !ok;
-      if (ok) warnBox.classList.remove("show");
-    }
-
-    function go() {
-      if (!ageCheck.checked) {
-        warnBox.classList.add("show");
-        return;
-      }
-      window.location.href = finalUrl;
-    }
-
-    ageCheck.addEventListener("change", syncButtons);
-    ctaBtn.addEventListener("click", go);
-    ctaBtnSticky.addEventListener("click", go);
-
-    syncButtons();
-  })();
-  </script>
+  syncButtons();
+})();
+</script>
 </body>
 </html>
